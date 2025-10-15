@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../Services/employee-service';
 import { CommonModule, DatePipe, DecimalPipe, SlicePipe, TitleCasePipe } from '@angular/common';
 import { KycDocumentUploadComponent } from '../kyc-document-upload-component/kyc-document-upload-component';
+import { ChangePasswordComponent } from '../change-password-component/change-password-component';
 
 
 @Component({
@@ -9,7 +10,8 @@ import { KycDocumentUploadComponent } from '../kyc-document-upload-component/kyc
   templateUrl: './employee-dash-board-component.html',
   styleUrls: ['./employee-dash-board-component.css'],
   standalone: true,
-  imports: [CommonModule, DatePipe, SlicePipe, TitleCasePipe, DecimalPipe, KycDocumentUploadComponent],
+  imports: [CommonModule, DatePipe, SlicePipe, TitleCasePipe, DecimalPipe,
+     KycDocumentUploadComponent,ChangePasswordComponent],
 })
 export class EmployeeDashBoardComponent implements OnInit {
 

@@ -74,6 +74,15 @@
       </div>
 
       <!-- Modals -->
+       <!-- Somewhere under My Profile or a Security panel -->
+<app-change-password
+  *ngIf="employee?.id && employee?.organizationId"
+  [orgId]="employee.organizationId"
+  [employeeId]="employee.id"
+  [logoutAfterSuccess]="false"
+  (changed)="refreshEmployeeData()">
+</app-change-password>
+
       <app-kyc-document-upload-component
         *ngIf="showKycUpload && employee?.id && employee?.organizationId"
         [employeeId]="employee.id"

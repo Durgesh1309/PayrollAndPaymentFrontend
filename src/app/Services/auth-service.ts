@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -12,11 +12,13 @@ interface LoginResponse {
   email: string;
   roles: string[];
 }
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private baseUrl = 'http://localhost:8080/api/auth'; // backend URL
   private loggedIn = new BehaviorSubject<boolean>(this.hasToken());
   loggedIn$ = this.loggedIn.asObservable();
+  
 
   constructor(private http: HttpClient) {}
 
