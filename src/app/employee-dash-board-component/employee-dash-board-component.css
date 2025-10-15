@@ -1,0 +1,90 @@
+.dashboard-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: #161c26;
+  color: #fff;
+}
+.sidebar {
+  width: 248px;
+  background: #222d3b;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-header {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.logo-img { height: 2rem; margin-right: 10px; }
+.nav-link {
+  display: block; color: #fff; margin: 0.5rem 0; padding: 0.5rem;
+  border-radius: 5px; text-decoration: none;
+}
+.nav-link.active, .nav-link:hover { background: #283345; }
+.sidebar-footer { margin-top: auto; font-size: 1rem; opacity: 0.8; }
+
+.main-content { flex: 1; padding: 2rem; }
+.main-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 2rem; font-size: 1.1rem;
+}
+.welcome-header { font-size: 1.25rem; }
+.emp-header { font-size: 1.1rem; color: #3dd6df; }
+
+.emp-panel {
+  background: #20293d;
+  padding: 2rem;
+  border-radius: 14px;
+  max-width: 900px;
+  margin: auto;
+  color: #fff;
+}
+.emp-card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+.emp-summary-card {
+  background: #222d3b;
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  min-width: 250px;
+  flex: 1 1 250px;
+  box-shadow: 0 2px 16px 2px #1328451a;
+  max-width: 330px;
+}
+.emp-summary-card h4 {
+  margin-bottom: 1rem;
+  color: #2dd7e3;
+}
+.kyc-status {
+  padding: 0.18em 0.8em;
+  border-radius: 6px;
+  margin-left: 0.2em;
+  font-weight: 600;
+  font-size: 1em;
+  display: inline-block;
+}
+.kyc-status.approved { background: #1b9139; color: #d5ffe5;}
+.kyc-status.pending { background: #bd870c; color: #fff8cd;}
+.kyc-status.rejected { background: #bf3339; color: #fff0f2;}
+.kyc-update-btn {
+  margin-top: 1em;
+  padding: 0.6em 1.2em;
+  border-radius: 6px;
+  border: none;
+  background: #468ff7;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.19s;
+  font-size: 1em;
+}
+.kyc-update-btn:hover { background: #2660a7; }
+
+@media (max-width: 1240px) {
+  .emp-card-grid { flex-direction: column; align-items: stretch; }
+  .emp-summary-card { max-width: 100%; }
+}

@@ -1,0 +1,60 @@
+<div class="dashboard-wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="assets/auropay-logo.png" class="logo-img"> Payroll Admin
+    </div>
+    <nav>
+      <a class="nav-link" [class.active]="currentSection==='dashboard'" (click)="showSection('dashboard')">Dashboard</a>
+      <a class="nav-link" [class.active]="currentSection==='pending'" (click)="showSection('pending')">Pending Documents</a>
+      <a class="nav-link" [class.active]="currentSection==='orgs'" (click)="showSection('orgs')">Organizations</a>
+      <a class="nav-link" [class.active]="currentSection==='reports'" (click)="showSection('reports')">Reports</a>
+    </nav>
+    <div class="sidebar-footer">Admin Controls</div>
+  </aside>
+  <main class="main-content">
+    <header class="main-header">
+      <div class="header-group">
+        <span class="welcome">Welcome <b>{{ adminName }}</b></span>
+        <span class="role-label">Admin Panel</span>
+      </div>
+      <div class="profile-avatar"><span>{{ adminName[0] || '?' }}</span></div>
+    </header>
+
+    <!-- Stunning, responsive dashboard cards -->
+    <section class="overview-panel" *ngIf="currentSection === 'dashboard'">
+      <div class="card-row">
+        <div class="summary-card card-orgs">
+          <div class="card-title">Total Organizations</div>
+          <div class="card-value">{{ stats.organizations }}</div>
+        </div>
+        <div class="summary-card card-pending">
+          <div class="card-title">Pending Documents</div>
+          <div class="card-value">{{ stats.pendingDocs }}</div>
+        </div>
+        <div class="summary-card card-approved">
+          <div class="card-title">Approved Today</div>
+          <div class="card-value">{{ stats.approvedToday }}</div>
+        </div>
+      </div>
+      <div class="quick-action-row">
+        <button (click)="showSection('pending')" class="quick-btn">
+          Review Pending Documents
+        </button>
+        <button (click)="showSection('orgs')" class="quick-btn">
+          View Organizations
+        </button>
+        <button (click)="showSection('reports')" class="quick-btn">
+          Analytics & Reports
+        </button>
+      </div>
+    </section>
+
+    <!-- Drill-downs rendered only when selected -->
+    <app-admin-pending-documents-component *ngIf="currentSection==='pending'"></app-admin-pending-documents-component>
+    <app-admin-organizations *ngIf="currentSection==='orgs'"></app-admin-organizations>
+    <div *ngIf="currentSection==='reports'" class="placeholder-panel">
+      <h3>Reports & Analytics</h3>
+      <p>Graphs and data visualizations go here...</p>
+    </div>
+  </main>
+</div>

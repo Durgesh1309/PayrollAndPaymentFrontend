@@ -1,0 +1,59 @@
+<nav class="rxp-navbar d-flex align-items-center justify-content-between px-4">
+  <div class="rxp-navbar-brand d-flex align-items-center">
+    <img src="assets/auropay.png" class="rxp-logo me-2" alt="Logo" />
+    <span class="rxp-navbar-title">Payroll</span>
+  </div>
+  <a class="rxp-top-link" routerLink="/home">
+    New to AuroPayXPayroll? Click here for our homepage!
+  </a>
+</nav>
+
+<div class="rxp-root d-flex align-items-center justify-content-center min-vh-100">
+  <div class="rxp-card shadow-lg">
+    <h3 class="rxp-title mb-4 text-center">Login</h3>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm" autocomplete="off">
+      <div class="mb-3">
+        <label for="username" class="form-label rxp-label">Username or Email</label>
+        <input
+          type="text"
+          id="username"
+          [(ngModel)]="loginData.usernameOrEmail"
+          name="usernameOrEmail"
+          autocomplete="username"
+          required
+          class="form-control rxp-input"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label rxp-label">Password</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="loginData.password"
+          name="password"
+          autocomplete="current-password"
+          required
+          class="form-control rxp-input"
+        />
+      </div>
+      <div class="mb-3">
+        <re-captcha
+          siteKey="6LfQs-YrAAAAAJDayuWcCA2TlGeq_5sA48r2u5Jp"
+          (resolved)="onCaptchaResolved($event)"
+          (error)="onCaptchaError($event)"
+        ></re-captcha>
+      </div>
+      <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+      <button
+        type="submit"
+        class="rxp-btn-submit w-100 mt-2"
+        [disabled]="loginForm.invalid || !loginData.captchaToken"
+      >
+        Login
+      </button>
+    </form>
+    <div class="small text-light mt-4 text-center opacity-70">
+      Don’t have an account? <a routerLink="/register" class="link-info" style="text-decoration:underline;">Sign Up</a>
+    </div>
+  </div>
+</div>

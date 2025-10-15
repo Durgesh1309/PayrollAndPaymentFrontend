@@ -1,0 +1,219 @@
+<!-- HEADER -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%) !important; border-bottom: 1px solid rgba(0, 51, 102, 0.08); padding: 0.8rem 0; transition: all 0.3s ease;">
+  <div class="container">
+   <a href="#" class="navbar-brand fw-bold" style="font-size:1.8rem; display: flex; align-items: center; font-weight: 800 !important; letter-spacing: -0.5px;">
+  <span style="background: linear-gradient(135deg, #003366 0%, #0066cc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">AuroPay</span>
+</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" href="#" style="color: #333 !important; font-weight: 500; margin: 0 12px; position: relative; transition: all 0.3s ease;">Payments</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" style="color: #333 !important; font-weight: 500; margin: 0 12px; position: relative; transition: all 0.3s ease;">Payroll</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" style="color: #333 !important; font-weight: 500; margin: 0 12px; position: relative; transition: all 0.3s ease;">Banking</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" style="color: #333 !important; font-weight: 500; margin: 0 12px; position: relative; transition: all 0.3s ease;">Partners</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" style="color: #333 !important; font-weight: 500; margin: 0 12px; position: relative; transition: all 0.3s ease;">Resources</a></li>
+      </ul>
+      <div>
+        <button class="btn btn-outline-primary me-2" (click)="goToLogin()" style="border: 2px solid #0066cc; color: #0066cc; font-weight: 600; transition: all 0.3s ease; cursor: pointer;">Login</button>
+        <button class="btn btn-primary btn-shadow" (click)="goToSignup()" style="background: linear-gradient(135deg, #0066cc 0%, #003366 100%); border: none; font-weight: 600; transition: all 0.3s ease; cursor: pointer; color: white;">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section style="background: linear-gradient(135deg, #0a0e27 0%, #1a2456 50%, #0a3d66 100%); position: relative; overflow: hidden; padding: 100px 0; min-height: 600px; display: flex; align-items: center;">
+  <div style="position: absolute; top: 0; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(0, 102, 204, 0.15) 0%, transparent 70%); border-radius: 50%; animation: float 6s ease-in-out infinite;"></div>
+  <div style="position: absolute; bottom: -100px; left: -200px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(0, 51, 102, 0.2) 0%, transparent 70%); border-radius: 50%; animation: float 8s ease-in-out infinite reverse;"></div>
+  
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(30px); }
+    }
+    @keyframes slideInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes rotate {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+  </style>
+
+  <div class="container text-center py-5" style="position: relative; z-index: 2;">
+    <h1 style="font-size: 3.5rem; font-weight: 800; color: white; line-height: 1.2; margin-bottom: 1.5rem; animation: slideInDown 0.8s ease;">
+      <span style="background: linear-gradient(135deg, #00d4ff 0%, #0066cc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900;">Smartest way</span> to <b>manage Payroll & Payments</b>
+    </h1>
+    <p style="color: rgba(255, 255, 255, 0.85); font-size: 1.25rem; max-width: 700px; margin: 0 auto 2rem; font-weight: 400; animation: slideInUp 0.8s ease;" class="lead mb-4 mt-3">
+      A complete enterprise suite for payroll automation, workforce onboarding, compliance and global payouts.
+    </p>
+    <button class="btn px-4 py-2 btn-lg me-3" (click)="goToSignup()" style="background: linear-gradient(135deg, #00d4ff 0%, #0066cc 100%); border: none; color: white; font-weight: 600; padding: 12px 32px; border-radius: 8px; transition: all 0.3s ease; animation: slideInUp 0.8s ease 0.1s both; cursor: pointer;">Get Started</button>
+    <button class="btn btn-outline-primary px-4 py-2 btn-lg" (click)="goToLogin()" style="border: 2px solid white; color: white; font-weight: 600; transition: all 0.3s ease; cursor: pointer; background: transparent;">Login</button>
+  </div>
+</section>
+
+<!-- STEPPER SECTION -->
+<section class="container my-5">
+  <div class="row align-items-center text-center" style="margin-top: 80px; margin-bottom: 80px;">
+    <div class="col-lg-4 mb-4 mb-lg-0">
+      <div style="position: relative; display: inline-block; margin-bottom: 30px;">
+        <div style="position: absolute; width: 170px; height: 170px; border: 3px dashed rgba(0, 102, 204, 0.2); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: rotate 20s linear infinite;"></div>
+        <div style="position: absolute; width: 155px; height: 155px; border: 2px solid rgba(0, 212, 255, 0.15); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+        
+        <div style="width: 140px; height: 140px; background: linear-gradient(135deg, #e3f2ff 0%, #cfe7ff 100%); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1); position: relative; cursor: pointer; box-shadow: 0 10px 40px rgba(0, 102, 204, 0.2), inset 0 -5px 20px rgba(0, 102, 204, 0.1);">
+          <div style="width: 110px; height: 110px; background: linear-gradient(135deg, #0066cc 0%, #003366 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), inset 0 2px 10px rgba(255, 255, 255, 0.1);">
+            <i class="bi bi-building" style="font-size: 3.2rem; color: white;"></i>
+          </div>
+        </div>
+        
+        <div style="position: absolute; top: 0; right: 0; width: 42px; height: 42px; background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5); font-weight: bold; color: white; font-size: 1.3rem; border: 4px solid white;">1</div>
+      </div>
+      <h5 class="fw-bold mb-2" style="font-size: 1.35rem; color: #0a0e27; font-weight: 700; margin-top: 15px; transition: color 0.3s ease;">Create Your Organization</h5>
+      <div style="color: #666; font-size: 1rem; line-height: 1.7; max-width: 280px; margin: 0 auto;">Sign up, provide details and start in minutes.</div>
+    </div>
+    
+    <div class="col-lg-4 mb-4 mb-lg-0">
+      <div style="position: relative; display: inline-block; margin-bottom: 30px;">
+        <div style="position: absolute; width: 170px; height: 170px; border: 3px dashed rgba(0, 102, 204, 0.2); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: rotate 20s linear infinite;"></div>
+        <div style="position: absolute; width: 155px; height: 155px; border: 2px solid rgba(0, 212, 255, 0.15); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+        
+        <div style="width: 140px; height: 140px; background: linear-gradient(135deg, #e3f2ff 0%, #cfe7ff 100%); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1); position: relative; cursor: pointer; box-shadow: 0 10px 40px rgba(0, 102, 204, 0.2), inset 0 -5px 20px rgba(0, 102, 204, 0.1);">
+          <div style="width: 110px; height: 110px; background: linear-gradient(135deg, #0066cc 0%, #003366 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), inset 0 2px 10px rgba(255, 255, 255, 0.1);">
+            <i class="bi bi-people" style="font-size: 3.2rem; color: white;"></i>
+          </div>
+        </div>
+        
+        <div style="position: absolute; top: 0; right: 0; width: 42px; height: 42px; background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5); font-weight: bold; color: white; font-size: 1.3rem; border: 4px solid white;">2</div>
+      </div>
+      <h5 class="fw-bold mb-2" style="font-size: 1.35rem; color: #0a0e27; font-weight: 700; margin-top: 15px; transition: color 0.3s ease;">Add Employees & Setup Data</h5>
+      <div style="color: #666; font-size: 1rem; line-height: 1.7; max-width: 280px; margin: 0 auto;">Bulk onboard, assign roles—seamless workforce management.</div>
+    </div>
+    
+    <div class="col-lg-4">
+      <div style="position: relative; display: inline-block; margin-bottom: 30px;">
+        <div style="position: absolute; width: 170px; height: 170px; border: 3px dashed rgba(0, 102, 204, 0.2); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: rotate 20s linear infinite;"></div>
+        <div style="position: absolute; width: 155px; height: 155px; border: 2px solid rgba(0, 212, 255, 0.15); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+        
+        <div style="width: 140px; height: 140px; background: linear-gradient(135deg, #e3f2ff 0%, #cfe7ff 100%); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1); position: relative; cursor: pointer; box-shadow: 0 10px 40px rgba(0, 102, 204, 0.2), inset 0 -5px 20px rgba(0, 102, 204, 0.1);">
+          <div style="width: 110px; height: 110px; background: linear-gradient(135deg, #0066cc 0%, #003366 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), inset 0 2px 10px rgba(255, 255, 255, 0.1);">
+            <i class="bi bi-cash-stack" style="font-size: 3.2rem; color: white;"></i>
+          </div>
+        </div>
+        
+        <div style="position: absolute; top: 0; right: 0; width: 42px; height: 42px; background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5); font-weight: bold; color: white; font-size: 1.3rem; border: 4px solid white;">3</div>
+      </div>
+      <h5 class="fw-bold mb-2" style="font-size: 1.35rem; color: #0a0e27; font-weight: 700; margin-top: 15px; transition: color 0.3s ease;">Automate Payroll & Payouts</h5>
+      <div style="color: #666; font-size: 1rem; line-height: 1.7; max-width: 280px; margin: 0 auto;">Run payroll, trigger instant payments and stay compliant.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE PANELS -->
+<section style="background: linear-gradient(135deg, #f8f9ff 0%, #e8eeff 100%); padding: 100px 0 !important; position: relative;">
+  <div class="container">
+    <h2 style="text-align: center; font-size: 2.5rem; font-weight: 800; color: #0a0e27; margin-bottom: 60px;">Why Choose <span style="background: linear-gradient(135deg, #0066cc 0%, #00d4ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">AuroPay</span>?</h2>
+    <div class="row text-center">
+      <div class="col-lg-3 mb-4 mb-lg-0">
+        <div style="background: white; border-radius: 20px; padding: 45px 30px; transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1); border: 2px solid rgba(0, 102, 204, 0.08); position: relative; overflow: hidden; height: 100%; box-shadow: 0 4px 20px rgba(0, 102, 204, 0.08);">
+          <div style="position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #0066cc, #00d4ff); border-radius: 20px 20px 0 0;"></div>
+          <div style="width: 90px; height: 90px; margin: 0 auto 25px; border-radius: 18px; display: flex; align-items: center; justify-content: center; color: white; background: linear-gradient(135deg, #0066cc 0%, #004d99 100%); transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(0, 102, 204, 0.25);">
+            <svg style="width: 45px; height: 45px; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));" fill="white" viewBox="0 0 24 24">
+              <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+            </svg>
+          </div>
+          <h6 class="fw-bold mb-3" style="font-size: 1.25rem; color: #0a0e27; margin-bottom: 15px; font-weight: 700;">Bank-Grade Security</h6>
+          <div style="color: #555; line-height: 1.7; font-size: 0.95rem;">Encryption and multi-layer compliance for all your payroll & payment data.</div>
+        </div>
+      </div>
+      
+      <div class="col-lg-3 mb-4 mb-lg-0">
+        <div style="background: white; border-radius: 20px; padding: 45px 30px; transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1); border: 2px solid rgba(0, 212, 255, 0.08); position: relative; overflow: hidden; height: 100%; box-shadow: 0 4px 20px rgba(0, 212, 255, 0.08);">
+          <div style="position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #00d4ff, #0099ff); border-radius: 20px 20px 0 0;"></div>
+          <div style="width: 90px; height: 90px; margin: 0 auto 25px; border-radius: 18px; display: flex; align-items: center; justify-content: center; color: white; background: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%); transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(0, 212, 255, 0.25);">
+            <svg style="width: 45px; height: 45px; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));" fill="white" viewBox="0 0 24 24">
+              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+              <circle cx="9.5" cy="9.5" r="1.5"/>
+              <path d="M13.94 5.22l1.42 1.42c.39-.39.68-.86.87-1.39l-1.93-.51c-.12.5-.29.96-.54 1.38zM8.69 3.87L7.27 5.29c.39.39.86.68 1.39.87l.51-1.93c-.5-.12-.96-.29-1.38-.54z"/>
+            </svg>
+          </div>
+          <h6 class="fw-bold mb-3" style="font-size: 1.25rem; color: #0a0e27; margin-bottom: 15px; font-weight: 700;">Real-Time Payouts</h6>
+          <div style="color: #555; line-height: 1.7; font-size: 0.95rem;">Instant salary disbursement & vendor payments globally.</div>
+        </div>
+      </div>
+      
+      <div class="col-lg-3 mb-4 mb-lg-0">
+        <div style="background: white; border-radius: 20px; padding: 45px 30px; transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1); border: 2px solid rgba(51, 170, 102, 0.08); position: relative; overflow: hidden; height: 100%; box-shadow: 0 4px 20px rgba(51, 170, 102, 0.08);">
+          <div style="position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #33aa66, #00cc66); border-radius: 20px 20px 0 0;"></div>
+          <div style="width: 90px; height: 90px; margin: 0 auto 25px; border-radius: 18px; display: flex; align-items: center; justify-content: center; color: white; background: linear-gradient(135deg, #33aa66 0%, #00cc66 100%); transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(51, 170, 102, 0.25);">
+            <svg style="width: 45px; height: 45px; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));" fill="white" viewBox="0 0 24 24">
+              <path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/>
+              <path d="M9.5 20.5l-6-6.01V20h5.5v.5z"/>
+              <path d="M16 20v-7.5l4-4V20h-4z"/>
+            </svg>
+          </div>
+          <h6 class="fw-bold mb-3" style="font-size: 1.25rem; color: #0a0e27; margin-bottom: 15px; font-weight: 700;">Smart Analytics</h6>
+          <div style="color: #555; line-height: 1.7; font-size: 0.95rem;">Visualize trends, employee costs, forecasting and more.</div>
+        </div>
+      </div>
+      
+      <div class="col-lg-3">
+        <div style="background: white; border-radius: 20px; padding: 45px 30px; transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1); border: 2px solid rgba(255, 153, 0, 0.08); position: relative; overflow: hidden; height: 100%; box-shadow: 0 4px 20px rgba(255, 153, 0, 0.08);">
+          <div style="position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #ff9900, #ffaa00); border-radius: 20px 20px 0 0;"></div>
+          <div style="width: 90px; height: 90px; margin: 0 auto 25px; border-radius: 18px; display: flex; align-items: center; justify-content: center; color: white; background: linear-gradient(135deg, #ff9900 0%, #ffaa00 100%); transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(255, 153, 0, 0.25);">
+            <svg style="width: 45px; height: 45px; filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));" fill="white" viewBox="0 0 24 24">
+              <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4c-1.48 0-2.85.43-4.01 1.17l1.46 1.46C10.21 6.23 11.08 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3s-1.34 3-3 3H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h.71C7.37 7.69 9.48 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3s-1.34 3-3 3h-1.5"/>
+              <path d="M10 17l-3.5-3.5 1.41-1.41L10 14.17l6.09-6.09L17.5 9.5z"/>
+            </svg>
+          </div>
+          <h6 class="fw-bold mb-3" style="font-size: 1.25rem; color: #0a0e27; margin-bottom: 15px; font-weight: 700;">Automated Compliance</h6>
+          <div style="color: #555; line-height: 1.7; font-size: 0.95rem;">TDS, PF, ESIC, tax filing—covered end-to-end.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS/TESTIMONIALS -->
+<section style="background: white; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; padding: 50px 0 !important;">
+  <div class="container text-center">
+    <span class="brand-title fw-bold" style="color: #0a0e27; font-size: 1rem; letter-spacing: 0.5px; text-transform: uppercase;">Trusted by top companies</span>
+    <div style="gap: 40px; margin-top: 30px !important; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
+      <img src="assets/aurinprologo.png" alt="Brand" style="height: 70px; width: 160px; opacity: 0.7; transition: all 0.3s ease; cursor: pointer; margin: 0 15px; object-fit: contain;">
+      <img src="assets/capgeminilogo.svg" alt="Brand" style="height: 70px; width: 160px; opacity: 0.7; transition: all 0.3s ease; cursor: pointer; margin: 0 15px; object-fit: contain;">
+      <img src="assets/deloiteelogo.svg" alt="Brand" style="height: 70px; width: 160px; opacity: 0.7; transition: all 0.3s ease; cursor: pointer; margin: 0 15px; object-fit: contain;">
+      <img src="assets/googlelogo.png" alt="Brand" style="height: 70px; width: 160px; opacity: 0.7; transition: all 0.3s ease; cursor: pointer; margin: 0 15px; object-fit: contain;">
+      <img src="assets/microsoftlogo.svg" alt="Brand" style="height: 70px; width: 160px; opacity: 0.7; transition: all 0.3s ease; cursor: pointer; margin: 0 15px; object-fit: contain;">
+    </div>
+  </div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer style="background: linear-gradient(135deg, #0a0e27 0%, #1a2456 100%) !important; border-top: 1px solid rgba(0, 102, 204, 0.2); padding: 50px 0 !important; color: white; margin-top: 16px;">
+  <div class="container d-flex flex-column flex-lg-row justify-content-between align-items-center">
+    <div class="fw-bold mb-3 mb-lg-0" style="display: flex; align-items: center;">
+      <img src="assets/auropay.png" alt="AuroPay" style="height:35px; width:auto; margin-right:12px; object-fit: contain; filter: brightness(0) invert(1);"> 
+      <span>© 2025 AuroPay</span>
+    </div>
+    <div>
+      <a class="footer-link me-3" href="#" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; font-weight: 500; transition: all 0.3s ease; position: relative;">Terms</a>
+      <a class="footer-link me-3" href="#" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; font-weight: 500; transition: all 0.3s ease; position: relative;">Privacy</a>
+      <a class="footer-link me-3" href="#" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; font-weight: 500; transition: all 0.3s ease; position: relative;">Security</a>
+      <a class="footer-link" href="#" style="color: rgba(255, 255, 255, 0.7); text-decoration: none; font-weight: 500; transition: all 0.3s ease; position: relative;">Support</a>
+    </div>
+  </div>
+</footer>

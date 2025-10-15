@@ -1,0 +1,31 @@
+.add-employee-form {
+  max-width: 450px;
+  margin-top: 1rem;
+  background-color: #1b2539cc;
+  border-radius: 18px;
+  padding: 1.5rem;
+  color: #fff;
+}
+
+.add-employee-form label {
+  font-weight: 600;
+  color: #c0c9d6;
+}
+
+.add-employee-form input {
+  background-color: #212c43;
+  border: 1.5px solid #23325f;
+  color: #fff;
+  border-radius: 8px;
+  height: 45px;
+}
+
+.add-employee-form input::placeholder {
+  color: #6680a4;
+}
+
+.add-employee-form input:focus {
+  border-color: #e48836;
+  box-shadow: 0 2px 8px 0 #e4883622;
+  outline: none;
+}

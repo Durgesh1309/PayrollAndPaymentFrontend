@@ -1,0 +1,131 @@
+<nav class="rxp-navbar d-flex align-items-center justify-content-between px-4">
+  <div class="rxp-navbar-brand d-flex align-items-center">
+    <img src="assets/logo.svg" class="rxp-logo me-2" alt="Logo" /> 
+    <span class="rxp-navbar-title">Payroll</span>
+  </div>
+  <a class="rxp-top-link" routerLink="/home">
+    New to AuroPayXPayroll? Click here for our homepage!
+  </a>
+</nav>
+
+<div class="rx-root-bg d-flex align-items-center justify-content-center min-vh-100">
+  <div class="rx-card p-4 shadow-lg rounded-4">
+    <h2 class="mb-4 text-center rx-title">Set up your account</h2>
+    <form #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)" novalidate>
+      <div class="mb-3">
+        <label for="name" class="form-label rx-label">Organization Name *</label>
+        <input
+          name="name"
+          [(ngModel)]="registrationData.name"
+          #name="ngModel"
+          id="name"
+          required
+          class="form-control rx-input"
+          placeholder="Enter organization name" />
+        <div class="rx-error" *ngIf="name.invalid && (name.dirty || name.touched)">
+          <small *ngIf="name.errors?.['required']">Organization name is required.</small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="contactNumber" class="form-label rx-label">Contact Number *</label>
+        <input
+          name="contactNumber"
+          [(ngModel)]="registrationData.contactNumber"
+          #contactNumber="ngModel"
+          id="contactNumber"
+          required
+          minlength="10"
+          maxlength="15"
+          class="form-control rx-input"
+          placeholder="Enter contact number" />
+        <div class="rx-error" *ngIf="contactNumber.invalid && (contactNumber.dirty || contactNumber.touched)">
+          <small *ngIf="contactNumber.errors?.['required']">Contact number is required.</small>
+          <small *ngIf="contactNumber.errors?.['minlength'] || contactNumber.errors?.['maxlength']">
+            Contact number must be between 10 and 15 characters.
+          </small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="address" class="form-label rx-label">Address *</label>
+        <textarea
+          name="address"
+          [(ngModel)]="registrationData.address"
+          #address="ngModel"
+          id="address"
+          required
+          class="form-control rx-input"
+          placeholder="Enter address"
+          rows="2"></textarea>
+        <div class="rx-error" *ngIf="address.invalid && (address.dirty || address.touched)">
+          <small *ngIf="address.errors?.['required']">Address is required.</small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="adminUsername" class="form-label rx-label">Admin Username *</label>
+        <input
+          name="adminUsername"
+          [(ngModel)]="registrationData.adminUsername"
+          #adminUsername="ngModel"
+          id="adminUsername"
+          required
+          class="form-control rx-input"
+          placeholder="Admin username" />
+        <div class="rx-error" *ngIf="adminUsername.invalid && (adminUsername.dirty || adminUsername.touched)">
+          <small *ngIf="adminUsername.errors?.['required']">Admin username is required.</small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="adminEmail" class="form-label rx-label">Admin Email *</label>
+        <input
+          type="email"
+          name="adminEmail"
+          [(ngModel)]="registrationData.adminEmail"
+          #adminEmail="ngModel"
+          id="adminEmail"
+          required
+          email
+          class="form-control rx-input"
+          placeholder="Admin email" />
+        <div class="rx-error" *ngIf="adminEmail.invalid && (adminEmail.dirty || adminEmail.touched)">
+          <small *ngIf="adminEmail.errors?.['required']">Admin email is required.</small>
+          <small *ngIf="adminEmail.errors?.['email']">Enter a valid email address.</small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="adminPassword" class="form-label rx-label">Admin Password *</label>
+        <input
+          type="password"
+          name="adminPassword"
+          [(ngModel)]="registrationData.adminPassword"
+          #adminPassword="ngModel"
+          id="adminPassword"
+          required
+          minlength="8"
+          class="form-control rx-input"
+          placeholder="Admin password" />
+        <div class="rx-error" *ngIf="adminPassword.invalid && (adminPassword.dirty || adminPassword.touched)">
+          <small *ngIf="adminPassword.errors?.['required']">Admin password is required.</small>
+          <small *ngIf="adminPassword.errors?.['minlength']">
+            Password must be at least 8 characters.
+          </small>
+        </div>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger mb-3">{{ errorMessage }}</div>
+
+      <button type="submit" class="btn rx-btn-submit w-100" [disabled]="registrationForm.invalid">
+        Register
+      </button>
+    </form>
+
+    <div class="small text-light mt-4 text-center opacity-70">
+      Already have an account?
+      <a routerLink="/login" class="link-info" style="text-decoration:underline;">Login</a>
+    </div>
+  </div>
+</div>

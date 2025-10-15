@@ -1,0 +1,25 @@
+<div class="modal-backdrop">
+  <div class="modal-panel">
+    <h3>Review Bank Account KYC</h3>
+    <p><strong>Account Holder:</strong> {{ bankAccount.accountHolderName }}</p>
+    <p><strong>Account Number:</strong> {{ bankAccount.accountNumber }}</p>
+    <p><strong>IFSC Code:</strong> {{ bankAccount.ifscCode }}</p>
+    <p><strong>Bank Name:</strong> {{ bankAccount.bankName }}</p>
+
+    <label>
+      <input type="radio" [(ngModel)]="approve" [value]="true" /> Approve
+    </label>
+    <label>
+      <input type="radio" [(ngModel)]="approve" [value]="false" /> Reject
+    </label>
+
+    <div *ngIf="!approve">
+      <textarea placeholder="Rejection reason" [(ngModel)]="rejectionReason"></textarea>
+    </div>
+
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+    <button (click)="submit()" [disabled]="submitting">{{ submitting ? 'Submitting...' : 'Submit' }}</button>
+    <button (click)="cancel()" [disabled]="submitting">Cancel</button>
+  </div>
+</div>

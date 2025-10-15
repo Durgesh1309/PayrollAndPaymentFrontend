@@ -1,0 +1,23 @@
+<div class="modal-backdrop">
+  <div class="modal-panel">
+    <h3>Review Document: {{ document.name }}</h3>
+    <p><strong>Filename: </strong>{{ document.filename }}</p>
+    <p><a [href]="document.url" target="_blank">View Document</a></p>
+
+    <label>
+      <input type="radio" [(ngModel)]="approve" [value]="true" /> Approve
+    </label>
+    <label>
+      <input type="radio" [(ngModel)]="approve" [value]="false" /> Reject
+    </label>
+
+    <div *ngIf="!approve">
+      <textarea placeholder="Rejection reason" [(ngModel)]="rejectionReason"></textarea>
+    </div>
+
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+    <button (click)="submit()" [disabled]="submitting">{{ submitting ? 'Submitting...' : 'Submit' }}</button>
+    <button (click)="cancel()" [disabled]="submitting">Cancel</button>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="assign-card">
+  <div class="assign-template">
+    <label for="templateSelect">Select Template:</label>
+    <select id="templateSelect" [(ngModel)]="selectedTemplateId">
+      <option [ngValue]="undefined" disabled selected>Select a template</option>
+      <option *ngFor="let template of templates" [value]="template.id">{{template.templateName}}</option>
+    </select>
+    <button (click)="assignTemplate()" [disabled]="!selectedTemplateId || loading">
+      {{loading ? 'Assigning...' : 'Assign Template'}}
+    </button>
+    <p *ngIf="message" class="message">{{message}}</p>
+  </div>
+</div>

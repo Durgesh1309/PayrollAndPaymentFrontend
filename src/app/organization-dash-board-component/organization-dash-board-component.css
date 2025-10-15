@@ -1,0 +1,40 @@
+.dashboard-wrapper { display: flex; min-height: 100vh; background: #161c26; color: #fff; }
+.sidebar { width: 250px; background: #222d3b; padding: 1rem; display: flex; flex-direction: column; }
+.sidebar-header { font-weight: bold; font-size: 1.2rem; margin-bottom: 1rem; }
+.logo-img { height: 2rem; vertical-align: middle; margin-right: 10px; }
+.nav-link { display: block; color: #fff; margin: 0.5rem 0; text-decoration: none; padding: 0.5rem; border-radius: 5px; }
+.nav-link.active, .nav-link:hover { background: #283345; }
+.sidebar-footer { margin-top: auto; font-size: 1rem; opacity: 0.8; }
+.main-content { flex: 1; padding: 2rem; }
+.main-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; font-size: 1.1rem; }
+.user-badge { background: #283345; padding: 8px 16px; border-radius: 25px; margin-left: 1rem; font-weight: 700; }
+.setup-panel { background: #20293d; padding: 2rem; border-radius: 14px; max-width: 700px; }
+.progress-bar-area { margin: 1rem 0; }
+.progress-text { font-size: 1rem; margin-bottom: 0.5rem; }
+.progress-bar { background: #283345; border-radius: 8px; height: 10px; width: 100%; overflow: hidden; }
+.progress-value { background: #2dd7e3; height: 10px; transition: width 0.5s; }
+.setup-steps { margin: 2rem 0; }
+.step-group { margin-bottom: 1.5rem; }
+.step-item { background: #222d3b; border-radius: 8px; padding: 1rem; margin: 0.5rem 0; display: flex; align-items: center; gap: 1rem; font-size: 1rem; }
+.help-link { text-align: left; margin-top: 1.5rem; color: #2dd7e3; font-size: 0.95rem; }
+input[type="file"] { margin-left: 1rem; }
+button { background: #2dd7e3; color: #181d23; border: none; border-radius: 7px; padding: 8px 14px; margin-left: 1rem; font-weight: 600; transition: background 0.2s; cursor: pointer;}
+button[disabled] { background: #8395b0; color: #fff; cursor: not-allowed; }
+a { color: #2dd7e3; text-decoration: underline; }
+.main-header {
+  display: flex;
+  align-items: center;
+}
+
+.welcome-user {
+  margin-right: 32px; /* Adjust spacing as you like */
+}
+.nav-link.disabled {
+  pointer-events: none;
+  opacity: 0.55;
+  color: #8395b0 !important;
+}
+.nav-link.selected {
+  background: #2dd7e3;
+  color: #181d23 !important;
+}

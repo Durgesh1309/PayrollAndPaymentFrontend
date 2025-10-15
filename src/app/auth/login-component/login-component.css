@@ -1,0 +1,110 @@
+body {
+  margin: 0;
+}
+
+.rxp-navbar {
+  height: 58px;
+  width: 100vw;
+  background: #151b28;
+  color: #fff;
+  font-size: 17px;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  box-shadow: 0 2px 12px #09135213;
+}
+.rxp-navbar-brand {
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: -0.7px;
+}
+.rxp-navbar-title {
+  color: #fff;
+  font-weight: 500;
+  margin-left: 6px;
+  font-size: 18px;
+}
+.rxp-logo {
+  height: 30px;
+  width: auto;
+}
+.rxp-top-link {
+  color: #5a90ff;
+  font-size: 14.7px;
+  text-decoration: underline;
+  transition: color 0.18s;
+}
+.rxp-top-link:hover {
+  color: #e48836;
+}
+/* Form root background and padding for navbar */
+.rxp-root {
+  background-color: #112233;
+  min-height: 100vh;
+  padding-top: 65px; /* must at least match navbar height */
+  background-image:
+    linear-gradient(120deg, #102840 70%, #1a293e 90%, #e48836 100%),
+    url('data:image/svg+xml;utf8,<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">ircle cx="140" cy="160" r="120" fill="none" stroke="%232265c7" stroke-width="12" opacityty="0.11"/>ircle cx="360" cy="120" r="80" fill="none" stroke="%23443b99" stroke-width="8" opacityty="0.10"/></svg>');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.rxp-card {
+  background-color: #1b2539cc;
+  border-radius: 18px;
+  box-shadow: 0 8px 40px 6px rgba(15,30,70,.27);
+  width: 100%;
+  max-width: 450px;
+  border: none;
+  padding: 2.5rem 2rem;
+}
+.rxp-title {
+  color: #fff;
+  font-weight: 700;
+}
+.rxp-label {
+  color: #c0c9d6;
+  font-size: 15px;
+  font-weight: 600;
+}
+.rxp-input {
+  background: #212c43;
+  color: #fff;
+  border: 1.5px solid #23325f;
+  border-radius: 8px;
+  font-size: 15px;
+  height: 45px;
+  box-shadow: none !important;
+}
+.rxp-input::placeholder {
+  color: #6680a4;
+  opacity: 1;
+}
+.rxp-input:focus {
+  border-color: #e48836;
+  outline: none;
+  box-shadow: 0 2px 8px 0 #e4883622;
+}
+.rxp-btn-submit {
+  background-color: #e48836;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #fff;
+  transition: background 0.18s;
+  box-shadow: 0 4px 16px 1px #e4883622;
+  height: 48px;
+}
+.rxp-btn-submit:hover,
+.rxp-btn-submit:active {
+  background-color: #ffb25a;
+  color: #222;
+}
+.opacity-70 { opacity: 0.7; }
+
+@media (max-width: 600px) {
+  .rxp-card {
+    padding: 2rem 1rem;
+  }
+}

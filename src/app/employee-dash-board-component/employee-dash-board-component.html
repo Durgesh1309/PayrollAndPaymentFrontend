@@ -1,0 +1,85 @@
+<div class="dashboard-wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="assets/auropay-logo.png" class="logo-img" alt="Logo" />Payroll
+    </div>
+    <nav>
+      <a class="nav-link active">Dashboard</a>
+      <a class="nav-link">My Payslips</a>
+      <a class="nav-link">My Profile</a>
+      <a class="nav-link">Attendance</a>
+      <a class="nav-link">Tax & Compliance</a>
+    </nav>
+    <div class="sidebar-footer">Company Details</div>
+  </aside>
+
+  <main class="main-content">
+    <header class="main-header">
+      <span class="welcome-header">Welcome <b>{{ employee.fullName }}</b></span>
+      <span class="emp-header">{{ employee.designation }} &mdash; EmpCode: <b>{{ employee.employeeCode }}</b></span>
+    </header>
+
+    <section class="emp-panel">
+      <h2>My Dashboard</h2>
+      <div class="emp-card-grid">
+        <div class="emp-summary-card">
+          <h4>Personal Details</h4>
+          <div><strong>Email:</strong> {{ employee.email }}</div>
+          <div><strong>Department:</strong> {{ employee.department }}</div>
+          <div><strong>Date of Joining:</strong> {{ employee.dateOfJoining | date }}</div>
+        </div>
+
+        <div class="emp-summary-card">
+          <h4>Bank/KYC Status</h4>
+          <div>
+            <strong>Bank Account:</strong> {{ employee.bankAccountNumber ? '****' + (employee.bankAccountNumber | slice:-4) : 'Not Provided' }}
+          </div>
+          <div>
+            <strong>KYC Status:</strong>
+            <span class="kyc-status" [ngClass]="employee.kycStatus">{{ employee.kycStatus | titlecase }}</span>
+          </div>
+          <div *ngIf="employee.kycStatus !== 'approved'">
+          <button (click)="openKycUpdate()"
+  [disabled]="employee.kycDocumentStatus === 'PENDING' || employee.kycDocumentStatus === 'APPROVED'">
+  Update/Upload KYC
+</button>
+
+<div *ngIf="employee.kycDocumentStatus === 'PENDING'">KYC verification pending.</div>
+<div *ngIf="employee.kycDocumentStatus === 'APPROVED'">KYC verified.</div>
+<div *ngIf="employee.kycDocumentStatus === 'REJECTED'">KYC rejected, upload again.</div>
+
+          </div>
+          <div *ngIf="employee.kycStatus === 'approved' && !employee.accountVerified">
+            <button class="bank-update-btn" (click)="openBankAccountUpdate()" [disabled]="!employee?.id || !employee?.organizationId">Update Bank Account</button>
+          </div>
+        </div>
+
+        <div class="emp-summary-card">
+          <h4>Payroll Summary</h4>
+          <div><strong>Current Salary:</strong> ₹{{ employee.currentSalary | number }}</div>
+          <strong>Last Payment:</strong>
+          {{ employee.lastPaymentDate ? (employee.lastPaymentDate | date:'mediumDate') : 'Not available' }}
+          <br />
+          <strong>Next Payment:</strong>
+          {{ employee.nextPaymentDate ? (employee.nextPaymentDate | date:'mediumDate') : 'Not available' }}
+        </div>
+
+        <div class="emp-summary-card">
+          <h4>Latest Activity</h4>
+          <ul>
+            <li *ngFor="let act of employee.recentActivities">{{ act }}</li>
+            <li *ngIf="!employee.recentActivities?.length">No recent activity.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Modals -->
+      <app-kyc-document-upload-component
+        *ngIf="showKycUpload && employee?.id && employee?.organizationId"
+        [employeeId]="employee.id"
+        [orgId]="employee.organizationId"
+        (close)="onModalClose()">
+      </app-kyc-document-upload-component>
+    </section>
+  </main>
+</div>

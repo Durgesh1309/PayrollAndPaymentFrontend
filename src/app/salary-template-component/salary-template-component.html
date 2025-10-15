@@ -1,0 +1,59 @@
+<div class="template-container">
+  <!-- Form (Left) -->
+  <div class="template-form">
+    <h3>Create Salary Template</h3>
+    <form [formGroup]="salaryForm" (ngSubmit)="createTemplate()">
+      <label>Template Name</label>
+      <input type="text" formControlName="templateName" placeholder="Enter template name" />
+
+      <label>Basic Salary (₹)</label>
+      <input type="number" formControlName="basicSalary" min="0" step="0.01" />
+
+      <label>HRA (₹)</label>
+      <input type="number" formControlName="hra" min="0" step="0.01" />
+
+      <label>Allowances (₹)</label>
+      <input type="number" formControlName="allowances" min="0" step="0.01" />
+
+      <label>Deductions (₹)</label>
+      <input type="number" formControlName="deductions" min="0" step="0.01" />
+
+      <button type="submit" [disabled]="salaryForm.invalid">Create Template</button>
+    </form>
+    <div *ngIf="creationSuccess" class="success-msg">Template created successfully!</div>
+    <div *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</div>
+  </div>
+
+  <!-- List (Right) -->
+  <div class="template-list">
+    <h3>Existing Templates</h3>
+    <input 
+      type="text" 
+      [(ngModel)]="searchText"
+      placeholder="Search by name..." 
+      class="template-search"
+    />
+
+    <div class="responsive-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th><th>Basic</th><th>HRA</th><th>Allowances</th><th>Deductions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let template of templates | templateFilter:searchText">
+            <td>{{template.templateName}}</td>
+            <td>₹{{template.basicSalary}}</td>
+            <td>₹{{template.hra}}</td>
+            <td>₹{{template.allowances}}</td>
+            <td>₹{{template.deductions}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="(templates | templateFilter:searchText).length === 0" class="empty-list-msg">
+        No templates found.
+      </div>
+    </div>
+  </div>
+</div>

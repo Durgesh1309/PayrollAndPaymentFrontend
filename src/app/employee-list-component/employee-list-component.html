@@ -1,0 +1,38 @@
+<h2>Employees</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Designation</th>
+      <th>Salary Template</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{ employee.fullName }}</td>
+      <td>{{ employee.email }}</td>
+      <td>{{ employee.designation }}</td>
+      <td>{{ employee.salaryTemplateName || 'Not Assigned' }}</td>
+      <td>
+        <button (click)="openAssignTemplate(employee.id)">
+          Assign Template
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Boxed modal, Close is centered below form -->
+<div *ngIf="selectedEmployeeId !== null" class="modal-overlay">
+  <div class="assign-modal-content">
+    <app-assign-salary-template-component 
+      [employeeId]="selectedEmployeeId"
+      (assignmentComplete)="onAssignmentComplete()">
+    </app-assign-salary-template-component>
+    <div class="modal-close-row">
+      <button (click)="selectedEmployeeId = null">Close</button>
+    </div>
+  </div>
+</div>

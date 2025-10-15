@@ -1,0 +1,59 @@
+<!-- admin-pending-documents-component.html -->
+<div class="admin-pending-docs">
+  <h2>Pending Document Approvals</h2>
+  <div *ngIf="organizations.length > 0">
+    <label for="org">Select Organization:</label>
+    <select id="org" [(ngModel)]="selectedOrgId" (change)="loadDocuments(selectedOrgId)">
+      <option *ngFor="let org of organizations" [value]="org.id">{{ org.name }}</option>
+    </select>
+  </div>
+<table class="pending-doc-table" *ngIf="pendingDocs.length > 0; else noDocs">
+  <thead>
+    <tr>
+      <th>Document Name</th>
+      <th>Filename</th>
+      <th>File Type</th>
+      <th>Status</th>
+      <th>View</th>
+      <th>Approve</th>
+      <th>Reject</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let doc of pendingDocs">
+      <td>{{ doc.name }}</td>
+      <td>{{ doc.filename }}</td>
+      <td>{{ doc.fileType }}</td>
+      <td>{{ doc.verificationStatus }}</td>
+      <td>
+        <a *ngIf="doc.url" [href]="doc.url" target="_blank">View</a>
+      </td>
+      <td>
+        <button [disabled]="isProcessing()" *ngIf="doc.verificationStatus === 'PENDING'" (click)="approveDocument(doc)">Approve</button>
+      </td>
+      <td>
+        <button [disabled]="isProcessing()" *ngIf="doc.verificationStatus === 'PENDING'" (click)="openRejectModal(doc)">Reject</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #noDocs>
+  <p>No documents pending for the selected organization.</p>
+</ng-template>
+
+  <ng-template #noDocs>
+    <p>No documents pending for the selected organization.</p>
+  </ng-template>
+
+  <!-- Modal for rejection reason -->
+  <div class="modal" *ngIf="showRejectModal()">
+    <div class="modal-content">
+      <h3>Rejection Reason</h3>
+      <textarea [(ngModel)]="rejectionReason" rows="4"></textarea>
+      <div class="modal-actions">
+        <button (click)="submitReject()" [disabled]="isProcessing()">Submit</button>
+        <button (click)="cancelReject()" [disabled]="isProcessing()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

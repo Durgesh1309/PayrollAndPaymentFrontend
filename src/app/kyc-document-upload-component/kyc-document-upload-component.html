@@ -1,0 +1,40 @@
+<div class="modal-backdrop">
+  <div class="modal-panel">
+    <h3>Upload KYC Document & Bank Details</h3>
+    <label>
+      Document Name:
+      <input [(ngModel)]="documentName" placeholder="E.g. Aadhar, PAN" />
+    </label>
+    <label>
+      Select File:
+      <input type="file" (change)="onFileSelected($event)" />
+    </label>
+
+    <hr/>
+
+    <label>
+      Account Holder Name:
+      <input [(ngModel)]="accountHolderName" placeholder="Account holder" />
+    </label>
+    <label>
+      Bank Account Number:
+      <input [(ngModel)]="bankAccountNumber" placeholder="Account number" />
+    </label>
+    <label>
+      IFSC Code:
+      <input [(ngModel)]="bankIfsc" placeholder="IFSC" />
+    </label>
+    <label>
+      Bank Name:
+      <input [(ngModel)]="bankName" placeholder="Bank name" />
+    </label>
+
+    <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+    <div class="success" *ngIf="successMessage">{{ successMessage }}</div>
+
+    <div *ngIf="uploading" class="spinner-overlay"><div class="spinner"></div></div>
+
+    <button (click)="uploadDocument()" [disabled]="uploading">Upload</button>
+    <button (click)="cancel()" [disabled]="uploading">Cancel</button>
+  </div>
+</div>

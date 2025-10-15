@@ -1,0 +1,136 @@
+<div class="dashboard-wrapper">
+  <!-- Sidebar Left -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="assets/auropay-logo.png" class="logo-img"> Payroll
+    </div>
+    <nav>
+      <a class="nav-link" [class.selected]="currentSection === 'dashboard'" (click)="showSection('dashboard')">Dashboard</a>
+      <a class="nav-link">My Pay</a>
+      <a class="nav-link">Attendance</a>
+      <a class="nav-link">Reimbursements</a>
+      <a class="nav-link">Tax Deductions</a>
+      <a class="nav-link">Reports</a>
+      <a class="nav-link">Approvals</a>
+      <!-- Conditionally show Add Employee -->
+      <ng-container *ngIf="organizationStatus === 'APPROVED'; else notApproved">
+        <a class="nav-link" [class.selected]="currentSection === 'add-employee'"
+           (click)="showSection('add-employee')" style="cursor: pointer;">
+          Add Employee
+        </a>
+      </ng-container>
+      <ng-template #notApproved>
+        <a class="nav-link disabled" style="color:#8395b0;pointer-events:none;cursor:not-allowed;" title="Organization approval required">
+          Add Employee
+        </a>
+      </ng-template>
+      <ng-container *ngIf="organizationStatus === 'APPROVED'">
+
+  <a class="nav-link" [class.selected]="currentSection === 'employee-list'"
+     (click)="showSection('employee-list')" style="cursor: pointer;">
+    Employee List
+  </a>
+  <a class="nav-link" [class.selected]="currentSection === 'document-review'"
+   (click)="showSection('document-review')" style="cursor:pointer;">
+  Pending Document Reviews
+</a>
+
+<a class="nav-link" [class.selected]="currentSection === 'bank-kyc-review'"
+   (click)="showSection('bank-kyc-review')" style="cursor:pointer;">
+  Pending Bank KYC Reviews
+</a>
+
+
+
+</ng-container>
+
+      
+      <!-- Add Salary Template navigation -->
+      <ng-container *ngIf="organizationStatus === 'APPROVED'">
+        <a class="nav-link" [class.selected]="currentSection === 'salary-templates'"
+           (click)="showSection('salary-templates')" style="cursor: pointer;">
+          Salary Templates
+        </a>
+      </ng-container>
+    </nav>
+    <div class="sidebar-footer">Company Details</div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Dashboard & Setup Progress -->
+    <section class="setup-panel" *ngIf="currentSection === 'dashboard'">
+      <header class="main-header">
+        <span class="welcome-header">Welcome <b>{{ username }}</b></span>
+        <span class="org-header">We ❤️ <b>{{ orgName }}</b></span>
+      </header>
+      <h2>Let's set up your organisation!</h2>
+      <div class="progress-bar-area">
+        <div class="progress-text">{{ stepsCompleted }} of {{ totalSteps }} completed</div>
+        <div class="progress-bar">
+          <div class="progress-value" [style.width.%]="(stepsCompleted / totalSteps) * 100"></div>
+        </div>
+      </div>
+      <div class="setup-steps">
+        <div class="step-group">
+          <h3>Basic details</h3>
+          <div class="step-item">
+            <span>1</span>
+            <span>Upload Registration Document (PDF, max 5MB)</span>
+            <span *ngIf="docStepStatus === 'NOT_UPLOADED'">
+              <input type="file" (change)="onFileSelected($event)" accept="application/pdf">
+              <button [disabled]="!selectedFile" (click)="uploadDoc()">Upload Document</button>
+            </span>
+            <span *ngIf="docStepStatus === 'PENDING'">Status: Pending admin verification</span>
+            <span *ngIf="docStepStatus === 'APPROVED'">
+              Approved <a [href]="docStatus?.url" target="_blank">View Document</a>
+            </span>
+            <span *ngIf="docStepStatus === 'REJECTED'">
+              Rejected: {{ docStatus?.rejectionReason ?? 'No reason' }}<br>
+              <input type="file" (change)="onFileSelected($event)" accept="application/pdf">
+              <button [disabled]="!selectedFile" (click)="uploadDoc()">Upload Document</button>
+            </span>
+          </div>
+        </div>
+        <div class="step-group">
+          <h3>Payroll Setup</h3>
+          <div class="step-item">
+            <span>2</span>
+            <span>Set payroll date</span>
+            <button (click)="startPayrollSetup()" [disabled]="!payrollSetupUnlocked">Start</button>
+          </div>
+          <div class="step-item">
+            <span>3</span>
+            <span>Set employee salary structure</span>
+            <button (click)="setupSalaryStructure()" [disabled]="!salaryStructureUnlocked">Setup</button>
+          </div>
+        </div>
+      </div>
+      <div class="help-link"><a href="#">Need help with setup?</a></div>
+    </section>
+
+    <!-- Add Employee Form -->
+    <section *ngIf="currentSection === 'add-employee'">
+      <h3>Add New Employee</h3>
+      <app-add-employee-component [orgId]="organizationId"></app-add-employee-component>
+      <button (click)="showSection('dashboard')" class="btn btn-secondary mt-3">Close</button>
+    </section>
+<section *ngIf="currentSection === 'employee-list'">
+  <app-employee-list-component></app-employee-list-component>
+</section>
+
+    <!-- Salary Template Creation -->
+    <section *ngIf="currentSection === 'salary-templates'">
+      <app-salary-template-component></app-salary-template-component>
+    </section>
+
+    <section *ngIf="currentSection === 'document-review'">
+  <app-document-review-list [orgId]="organizationId" (reviewCompleted)="refreshData()"></app-document-review-list>
+</section>
+
+<section *ngIf="currentSection === 'bank-kyc-review'">
+  <app-bank-kyc-review-list [orgId]="organizationId" (reviewCompleted)="refreshData()"></app-bank-kyc-review-list>
+</section>
+
+  </main>
+</div>

@@ -1,0 +1,48 @@
+<div class="add-employee-form card p-3 shadow-sm">
+  <h4>Add New Employee</h4>
+  <form [formGroup]="employeeForm" (ngSubmit)="addEmployee()" novalidate>
+
+    <div class="mb-2">
+      <label for="fullName" class="form-label">Full Name</label>
+      <input formControlName="fullName" id="fullName" class="form-control" placeholder="Employee full name" />
+      <div *ngIf="employeeForm.get('fullName')?.invalid && employeeForm.get('fullName')?.touched" class="text-danger small">
+        Full Name is required.
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <label for="email" class="form-label">Email</label>
+      <input formControlName="email" id="email" type="email" class="form-control" placeholder="Employee email" />
+      <div *ngIf="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched" class="text-danger small">
+        Valid Email is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="employeeCode" class="form-label">Employee Code</label>
+      <input formControlName="employeeCode" id="employeeCode" class="form-control" placeholder="Unique employee code" />
+      <div *ngIf="employeeForm.get('employeeCode')?.invalid && employeeForm.get('employeeCode')?.touched" class="text-danger small">
+        Employee Code is required.
+      </div>
+    </div>
+<div class="mb-2">
+  <label for="designation" class="form-label">Designation</label>
+  <input id="designation" formControlName="designation" class="form-control" placeholder="Designation" />
+</div>
+
+<div class="mb-2">
+  <label for="department" class="form-label">Department</label>
+  <input id="department" formControlName="department" class="form-control" placeholder="Department" />
+</div>
+
+<div class="mb-3">
+  <label for="dateOfJoining" class="form-label">Date of Joining</label>
+  <input id="dateOfJoining" type="date" formControlName="dateOfJoining" class="form-control" />
+</div>
+
+    <button class="btn btn-primary w-100" type="submit" [disabled]="employeeForm.invalid">Add Employee</button>
+  </form>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-2">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="alert alert-danger mt-2">{{ errorMessage }}</div>
+</div>
